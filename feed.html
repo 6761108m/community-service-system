@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile Page with Posts and File Upload</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .post-section {
+      margin-top: 20px;
+    }
+    .post {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .reply {
+      margin-left: 20px;
+      margin-top: 10px;
+      border-left: 2px solid #007bff;
+      padding-left: 10px;
+    }
+    .file-preview {
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      padding: 5px;
+      border-radius: 5px;
+      background: #fefefe;
+    }
+  </style>
+</head>
+<body id="background_color">
+  <header>
+    <a href="profile.php" class="logo"><h1>Community Service System</h1></a> <!-- Update to index.php -->
+    <nav>
+        <ul>
+            <li class="active"><a href="feed.html">Feed</a></li>
+            <li><a href="create_post.html">Create Post</a></li> 
+            <!-- <li><a href="responses.php">Responses</a></li> -->
+            <!-- <li><a href="tables.php">Admin</a></li> -->
+            <!-- <li><a href="members.php">List of Members</a></li> -->
+        </ul>
+    </nav>
+    </nav>
+    <div class="logout">
+        <a href="logout.php">Log out</a> 
+    </div>
+</header>
+<div class="container">
+
+  <!-- Post Creation Section -->
+  <div class="post-section">
+    <h4>Create a Post</h4>
+    <form id="postForm">
+      <div class="form-group">
+        <textarea class="form-control" id="postContent" rows="3" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="postFile">Attach a file:</label>
+        <input type="file" class="form-control" id="postFile">
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+
+  <!-- Posts Display Section -->
+  <div id="postsContainer" class="post-section">
+    <h4>Posts</h4>
+    <!-- Posts will be dynamically added here -->
+  </div>
+</div>
+
+<script>
+  // Handle post submission
+  document.getElementById('postForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const content = document.getElementById('postContent').value;
+    const fileInput = document.getElementById('postFile');
+    const file = fileInput.files[0];
+
+    if (content) {
+      addPost(content, file);
+      document.getElementById('postContent').value = ''; // Clear the textarea
+      fileInput.value = ''; // Clear the file input
+    }
+  });
+
+  // Add a new post
+  function addPost(content, file) {
+    const postContainer = document.createElement('div');
+    postContainer.className = 'post';
+
+    let postContent = `<p>${content}</p>`;
+
+    // Add file preview if a file was uploaded
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      const fileType = file.type.startsWith('image') ? 'image' : 'file';
+
+      if (fileType === 'image') {
+        postContent += `
+          <div class="file-preview">
+            <p>Attached Image:</p>
+            <img src="${fileURL}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+          </div>
+        `;
+      } else {
+        postContent += `
+          <div class="file-preview">
+            <p>Attached File: <a href="${fileURL}" target="_blank">${file.name}</a></p>
+          </div>
+        `;
+      }
+    }
+
+    postContent += `
+      <button class="btn btn-link btn-sm reply-button">Reply</button>
+      <div class="reply-section"></div>
+    `;
+    postContainer.innerHTML = postContent;
+
+    // Add reply functionality
+    const replyButton = postContainer.querySelector('.reply-button');
+    replyButton.addEventListener('click', function() {
+      const replyBox = document.createElement('div');
+      replyBox.className = 'form-group reply';
+      replyBox.innerHTML = `
+        <textarea class="form-control reply-content" rows="2" placeholder="Write a reply..." required></textarea>
+        <button class="btn btn-success btn-sm submit-reply">Submit</button>
+      `;
+      const replySection = postContainer.querySelector('.reply-section');
+      replySection.appendChild(replyBox);
+
+      // Handle reply submission
+      replyBox.querySelector('.submit-reply').addEventListener('click', function() {
+        const replyContent = replyBox.querySelector('.reply-content').value;
+        if (replyContent) {
+          const replyDiv = document.createElement('div');
+          replyDiv.className = 'reply';
+          replyDiv.innerHTML = `<p>${replyContent}</p>`;
+          replySection.appendChild(replyDiv);
+          replyBox.remove(); // Remove the reply box after submission
+        }
+      });
+    });
+
+    document.getElementById('postsContainer').appendChild(postContainer);
+  }
+</script>
+</body>
+</html>

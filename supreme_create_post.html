@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="create_post.css">
+    <title>Create a Post</title>
+</head>
+<body id="background_color">
+    <header>
+        <a href="supreme_home.php" class="logo"><h1>Community Service System</h1></a>
+        <nav>
+            <ul>
+                <li><a href="supreme_access.php">SUPREME ACCESS</a></li>
+                <li><a href="supreme_profile.php">My Profile</a></li>
+                <li><a href="supreme_join_events.php">Join Event</a></li>
+                
+                <li><a href="supreme_feed.php">Feed</a></li>
+                <li class="active"><a href="supreme_create_post.html">Create Post</a></li> 
+                <!-- <li><a href="contact.php">Contact Us</a></li> -->
+                <li class='logout'><a href="logout.php">Log out</a> </li>
+            </ul>
+        </nav>
+        <div class="logout">
+            <a href=#></a> 
+        </div>
+    </header>
+<br><br><br>
+    <h2>Create a New Post</h2>
+    <form action="supreme_create_post.php" method="POST" enctype="multipart/form-data">
+        <textarea name="content" placeholder="Write your post here..." cols="80" rows="10" required></textarea><br>
+        <label for="category">Choose a category:</label>
+        <select name="category" id="category" required>
+            <option value="Religious_Events">Religious Events</option>
+            <option value="Health_&_Wellness">Health & Wellness</option>
+            <option value="Education_&_Literacy">Education & Literacy</option>
+            <option value="Environmental_Protection">Environmental Protection</option>
+            <option value="Humanity">Social Welfare & Humanitarian Aid</option>
+            <option value="Youth">Youth & Children</option>
+            <option value="Animal_Welfare">Animal Welfare</option>
+            <option value="Elderly_Care">Elderly Care & Support</option>
+            <option value="Cultural_Events">Cultural Events & Heritage</option>
+            <option value="Disaster_Relief">Disaster Relief</option>
+            <option value="Job_Assistance">Job & Career Assistance</option>
+            <option value="Advocacy_Legal">Advocacy & Legal Support</option>
+            <option value="Arts_Creativity">Arts & Creativity</option>
+            <option value="Community_Development">Community Development</option>
+            <option value="Sports_Recreation">Sports & Recreation</option>
+            <option value="Others">Others</option>
+        </select><br><br>
+        <label for="event_date_checkbox">Add Event Date:</label>
+        <input type="checkbox" id="event_date_checkbox" name="event_date_checkbox"><br><br>
+        <label for="event_date" id="event_date_label" style="display:none;">Event Date (Optional):</label>
+        <input type="date" name="event_date" id="event_date" min="<?php echo date('Y-m-d'); ?>" style="display:none;"><br><br>
+
+        <div id="limit_participants_div" style="display:none;">
+            <label for="limit_participants">Set a participant limit for this event:</label>
+            <input type="checkbox" id="limit_participants" name="limit_participants"><br><br>
+            <label for="participants_limit" id="participants_limit_label" style="display:none;">Participants Limit:</label>
+            <input type="number" name="participants_limit" id="participants_limit" min="1" style="display:none;"><br><br>
+        </div>
+
+        <label>Upload an Image:</label>
+        <input type="file" name="image"><br><br>
+        <button type="submit">Post</button>
+        <a href="supreme_feed.php"><button type="button" class="logoutbtn">Cancel</button></a>
+    </form>
+
+    <script>
+        document.getElementById('event_date_checkbox').addEventListener('change', function() {
+            var eventDateInput = document.getElementById('event_date');
+            var eventDateLabel = document.getElementById('event_date_label');
+            var limitParticipantsDiv = document.getElementById('limit_participants_div');
+
+            if (this.checked) {
+                eventDateLabel.style.display = 'block';
+                eventDateInput.style.display = 'block';
+                limitParticipantsDiv.style.display = 'block';
+            } else {
+                eventDateLabel.style.display = 'none';
+                eventDateInput.style.display = 'none';
+                limitParticipantsDiv.style.display = 'none';
+            }
+        });
+        
+        // Disable past dates using JavaScript
+        document.getElementById('event_date').addEventListener('focus', function() {
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            let yyyy = today.getFullYear();
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('event_date').setAttribute('min', today);
+        });
+
+        document.getElementById('limit_participants').addEventListener('change', function() {
+            var participantsLimitInput = document.getElementById('participants_limit');
+            var participantsLimitLabel = document.getElementById('participants_limit_label');
+
+            if (document.getElementById('event_date_checkbox').checked) {
+                participantsLimitInput.required = this.checked;
+                participantsLimitLabel.style.display = this.checked ? 'block' : 'none';
+                participantsLimitInput.style.display = this.checked ? 'block' : 'none';
+            }
+        });
+    </script>
+</body>
+</html>

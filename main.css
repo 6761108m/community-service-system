@@ -1,0 +1,274 @@
+h2 { margin-top: 20px; }
+section { display: none; }
+.visible { display: block; }
+table, th, td { border: 1px solid black; }
+.title{ margin-left: 50px; }
+nav ul li { padding: 0 15px; }
+nav ul li a:hover,
+nav ul li.active a { 
+    color: #27ce80; 
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+/* nav ul li.logoutbtn a  { color: white; } */
+.logout a:hover{ 
+    transform: scale(1.1); /* Slight zoom effect */
+    color: rgb(255, 0, 0); 
+}
+.logo :hover{ color: #27ce80; text-decoration: underline;}
+#welcome h2 { font-size: 24px; }
+#responses {display: block; }
+#tables {display: block; }
+.statuslabel {margin-left: 50px;}
+.action-icons a { margin-right: 10px; }
+
+.status-dropdown{
+    background-color: #27ce80;
+    color: white;
+    border: 1px solid rgb(7, 6, 6);
+    border-radius: 3px;
+}
+
+#welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Adjust this value based on header height */
+    text-align: center;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    padding-top: 70px; /* Adjust this based on your header's height */
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 15px 30px;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft, extended shadow */
+    z-index: 1000;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition */
+}
+
+header h1 {
+    font-size: 28px;
+    margin-left: 20px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-left: 15px;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 3px;
+    background-color: #27ce80;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    width: 99%; /* Fixed width for uniformity */
+    border: 1px solid rgb(7, 6, 6);
+}
+
+.button:hover{ 
+    cursor: pointer; 
+    background-color: #27ce80;
+    text-decoration: none;
+    color: white;
+}
+
+.button a:hover{
+    cursor: pointer; 
+    background-color: orange;
+    text-decoration: none;
+    color: white;
+}
+
+#addButton { 
+    padding: 5px 10px; 
+    width: fit-content;
+    margin-left: 50px;
+}
+
+.logo {
+    font-family: 'Times New Roman', serif;
+    text-decoration: none;
+    color: black;
+}
+
+table { 
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 93.53%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    font-size: smaller;
+}
+
+th, td { 
+    padding: 8px; text-align: left; 
+    border:3px solid black;
+}
+
+th{
+    font-weight: bolder;
+    background-color: #27ce80;
+}
+
+.logout a {
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+}
+#background_color {
+    background-color: rgb(187, 219, 135); /* For browsers that do not support gradients */
+    background-image: #4CAF50 ;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 3px;
+    background-color: #ce2727;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    width: 99%; /* Fixed width for uniformity */
+    border: 1px solid rgb(7, 6, 6);
+}
+
+.delete-btn:hover{ 
+    cursor: pointer; 
+    background-color: #bc1616;
+    text-decoration: none;
+    color: white;
+}
+/* SEARCH BUTTONSS */
+/* Container for the search bar */
+#search-container {
+    margin: 20px 0;
+    text-align: center; /* Center the search box */
+}
+
+/* Style for the search input field */
+#search-input {
+    width: 300px; /* Set a fixed width */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px; /* Space between the input and the button */
+    transition: border-color 0.3s ease;
+}
+
+/* Focus state for the input field */
+#search-input:focus {
+    border-color: #27ce80; /* Change border color when focused */
+    outline: none; /* Remove default outline */
+}
+
+/* Style for the search button */
+#search-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #1f9b61; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the search button */
+#search-btn:hover {
+    background-color: orangered;
+}
+
+/* Style the link as a button */
+a.btn {
+    position: fixed;
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #FF7043 ; /* Green background */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    bottom: 20px;/* Distance from the bottom of the screen */
+    right: 20px; /*Distance from the right side of the screen*/
+}
+
+a.btn:hover {
+    background-color: orangered;
+}
+
+a.btnA {
+    /* position: fixed; */
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #FF7043 ; /* Green background */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    /* bottom: 20px; Distance from the bottom of the screen */
+    /* right: 20px; Distance from the right side of the screen */
+}
+
+a.btnA:hover {
+    background-color: orangered;
+}
+
+
+
+/* .logoutbtn {
+
+    display: inline-block;
+    padding: 6px 11px;
+    background-color: orangered;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: auto;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+} */
+
+/* .logoutbtn:hover {
+    background-color: rgb(216, 60, 3);
+} */

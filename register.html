@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Registration Page</title>
+    <link rel="stylesheet" type="text/css" href="register.css">
+</head>
+<body>
+    <h1>Community Service System</h1>
+    <h3>Create an Account</h3>
+    <form id="form" action="register.php" method="POST">
+        <div class="formcontent">
+            <div class="left">
+                <div class="formitem">
+                    <label for="username">Username<span style="color: red;">*</span></label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="formitem">
+                    <label for="firstname">First Name<span style="color: red;">*</span></label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+                <div class="formitem">
+                    <label for="lastname">Last Name<span style="color: red;">*</span></label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="formitem">
+                    <label for="gender">Gender<span style="color: red;">*</span></label>
+                        <input type="radio" name="gender" id="male" value="Male">Male
+                        <input type="radio" name="gender" id="female" value="Female">Female
+                </div>
+                <div class="formitem">
+                    <label for="address">Address<span style="color: red;">*</span></label>
+                    <textarea id="address" name="address" rows="5" required></textarea>
+                </div>
+                <h5 style="color: red;">*Password must be at least 6 characters long,<br> including uppercase, lowercase, a number,<br> and a special character.</h5>
+            </div>
+
+            <div class="right">
+                <div class="formitem">
+                    <label for="email">Email<span style="color: red;">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="formitem">
+                    <label for="role">Role in Community<span style="color: red;">*</span></label>
+                    <input type="radio" name="roleincommunity" id="community-member" value="Community Member"> Community Member <br><br>
+                    <input type="radio" name="roleincommunity" id="supreme-committee" value="Supreme Committee"> Supreme Committee
+                </div>
+                
+                <div class="formitem">
+                    <label for="password">Create Password<span style="color: red;">*</span></label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" onclick="togglePassword('password')">Show</button>
+                </div>
+
+                <div class="formitem">
+                    <label for="confirmpassword">Confirm Password<span style="color: red;">*</span></label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" required>
+                    <button type="button" onclick="togglePassword('confirmpassword')">Show</button>
+                </div>
+                
+                <div class="formitem">
+                    <label for="phonenumber">Phone Number<span style="color: red;">*</span></label>
+                    <input type="text" id="phonenumber" name="phonenumber" value="+60" required>
+                </div>
+                <h5 style="color: red;">*This is required to fill</h5>
+                
+               
+            </div>
+
+        <div class="footer">
+            <button type="submit" id="createAccount">Create Account</button>
+            <br><br>
+            Have an account? <a href="login.html">Sign in here</a>
+        </div>
+    </form>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const button = passwordField.nextElementSibling;
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                passwordField.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+    </script>
+</body>
+</html>

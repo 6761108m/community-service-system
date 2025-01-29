@@ -1,0 +1,174 @@
+/* General page setup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('Image/world-vision.jpg');
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the image fixed when scrolling */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+    position: relative; /* For absolute positioning of overlay */
+}
+
+/* Dark overlay for the background */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay (0.5 is the opacity level) */
+    z-index: -1; /* Ensures content appears above the overlay */
+}
+
+/* Header styles */
+h1 {
+    color: #ffffff;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.login-icon {
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+/* Login form styling */
+.login-form {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
+}
+
+.login-form label {
+    font-size: 14px;
+    color: #1f9b61;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+button[type="submit"] {
+    background-color: #1f9b61;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: orangered;
+}
+
+/* Show / Hide password button */
+button[type="button"] {
+    background: none;
+    border: none;
+    color: #1f9b61;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Sign up link */
+.login-form a {
+    color: #1f9b61;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-form a:hover {
+    color: orangered;
+}
+
+/* Illustration section */
+.illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.illustration img {
+    height: 250px;
+    width: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer section */
+.copyright {
+    font-size: 14px;
+    color: #A8E6CF;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+}
+
+/* Optional adjustments for responsive design */
+@media (max-width: 600px) {
+    .login-form {
+        padding: 20px;
+    }
+
+    .illustration img {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+.intro-text {
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    max-width: 80%;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}

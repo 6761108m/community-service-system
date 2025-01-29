@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Community Service System</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <h1>Welcome to Community Service System</h1>
+<p class="intro-text">Taman Bukit Katil's Community Service System is dedicated to enhancing the well-being of our residents. We aim to provide a platform for residents to stay connected, share information, and contribute to the development of our community.</p>
+
+    <h2>Login <img src="image/loginaccount.png" class="login-icon" alt="login icon"></h2>
+    <form class="login-form" id="login-form" action="login.php" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+        
+        <div style="position: relative; margin-bottom: 30px;">
+            <button type="button" onclick="togglePassword()">Show</button>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+    </form>
+    <br><br>
+    <div class="copyright">
+        <h5>Copyright 67611 | Community Service System</h5>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById('password');
+            var button = event.target;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+    </script>
+</body>
+</html>
